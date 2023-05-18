@@ -3,11 +3,28 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const Componente = () => null;
+
+const Button = (props : any) => {
+  const titulo = props.titulo ? props.titulo : 'texto padrão'
+  return (
+    <>
+    <button>{titulo}</button>
+    <br/>
+    </>);
+}
+//auto rename tag - baixar extensao
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [contador, setContador] = useState(0)
+
+  const handleOnClick = () => {
+    setContador(contador+1);
+  }
 
   return (
     <>
+    <div><h1>{contador}</h1></div>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -18,16 +35,13 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <Button titulo='Meu primeiro botão'/>
+        <Button titulo='Meu segundo botão'/>
+        <Button/>
+        <button onClick={handleOnClick}>
+          count is {contador}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
