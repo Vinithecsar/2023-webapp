@@ -3,8 +3,6 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-const Componente = () => null;
-
 const Button = (props : any) => {
   const titulo = props.titulo ? props.titulo : 'texto padrão'
   return (
