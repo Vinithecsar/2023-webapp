@@ -1,45 +1,38 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-const Button = (props : any) => {
+// componente React Vazio
+const Componente = () => null;
+
+// componente React
+const Botao = (props : any) => {
   const titulo = props.titulo ? props.titulo : 'texto padrão'
+  const [contador, contar] = useState(0);
   return (
     <>
-    <button>{titulo}</button>
-    <br/>
+    <button onClick={() => contar(contador+1)}>
+    {`${titulo} (${contador})`}
+    </button>
     </>);
 }
 
 //auto rename tag - baixar extensao
 
 function App() {
-  const [contador, setContador] = useState(0)
+  const [contador, setContador] = useState(5)
 
-  const handleOnClick = () => {
-    setContador(contador+1);
-  }
 
   return (
     <>
-    <div><h1>{contador}</h1></div>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+    <div><h1>Meu contador está em {contador}</h1></div>
       <div className="card">
-        <Button titulo='Meu primeiro botão'/>
-        <Button titulo='Meu segundo botão'/>
-        <Button/>
-        <button onClick={handleOnClick}>
-          count is {contador}
+        <Botao titulo="Incrementar"/>
+        <Botao titulo={"Decrementar"}/>
+        <Botao titulo={"Zerar"}/>
+        <button onClick={() => setContador(contador+1)}>
+          Estado geral
         </button>
+        <Componente />   
       </div>
     </>
   )
