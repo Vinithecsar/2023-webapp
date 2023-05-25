@@ -15,12 +15,42 @@ const Botao = (props : any) => {
     </button>
     </>);
 }
+const ListaItem = (props:any) => {
+  return <li key={(props.indice)}>{props.titulo}</li>
+}
+
+const Lista = () => {
+  const tarefas = [
+    "Baixar o projeto do GitHub",
+    "nstalar bibliotecas do projeto",
+    "Executar aplicação Web",
+    "Programar em Js e React",
+    "Guardar as modificações no repositório",
+    "Publicar as modificações no GitHub"
+
+  ]
+  return (
+    <div className="card">
+      <ul>
+        {tarefas.map( (tarefa:string, index) => <ListaItem indice={index} titulo={tarefa}/>)}
+      </ul>
+      <ul>
+        <ListaItem indice={0} titulo={tarefas[0]} />
+        <ListaItem indice={1} titulo={tarefas[1]} />
+        <ListaItem indice={2} titulo={tarefas[2]} />
+        <ListaItem indice={3} titulo={tarefas[3]} />
+        <ListaItem indice={4} titulo={tarefas[4]} />
+        <ListaItem indice={5} titulo={tarefas[5]} />
+      </ul>
+    </div>
+  );
+}
+//<li key={5}>{tarefas[5]}</li>
 
 //auto rename tag - baixar extensao
 
-function App() {
+const App = () => {
   const [contador, setContador] = useState(5)
-
 
   return (
     <>
@@ -34,6 +64,7 @@ function App() {
         </button>
         <Componente />   
       </div>
+      <Lista/>
     </>
   )
 }
